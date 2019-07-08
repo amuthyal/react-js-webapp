@@ -14,7 +14,9 @@ class App extends Component {
   };
 
   deletePersonHandler = (personIndex) => {
-    const persons= this.state.persons;
+//     const persons= this.state.persons.slice();
+        const persons = [...this.state.persons]; // spread method of ES6
+// we are basically making a copy of the array and then manipulating it, its a good practice to do so
     persons.splice(personIndex,1); // simply removes one element from the array
     this.setState({
       persons: persons
