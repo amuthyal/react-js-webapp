@@ -55,7 +55,7 @@ class App extends Component {
           <div>
           {this.state.persons.map(person => {
               return <Person name={person.name} age={person.age}/>
-            
+            // mapping an array into another array ES6 map method
                } )
           }
           </div> 
