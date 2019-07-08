@@ -13,14 +13,11 @@ class App extends Component {
     showPersons: false
   };
 
-  switchNameHandler = (newName) => {
-    // console.log('Was clicked!');
+  deletePersonHandler = (personIndex) => {
+    const persons= this.state.persons;
+    persons.splice(personIndex,1); // simply removes one element from the array
     this.setState({
-      persons: [
-        { name: newName, age: 28 },
-        { name: 'Manu', age: 29 },
-        { name: 'Stephanie', age: 27 }
-      ]
+      persons: persons
     });
   }
 
@@ -53,11 +50,10 @@ class App extends Component {
     if(this.state.showPersons){
         persons= (
           <div>
-          {this.state.persons.map(person => {
-              return <Person name={person.name} age={person.age}/>
-            // mapping an array into another array ES6 map method
-               } )
-          }
+        {this.state.persons.map((person, index )=> {
+              return <Person click={()=>this.deletePersonHandler(index)} name={person.name} age={person.age}/>
+            
+               } )}
           </div> 
         );
     }
